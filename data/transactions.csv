@@ -1,0 +1,3 @@
+drugCode,quantity,timestamp,buyerId,totalCost
+D001,5,2025-07-04T10:30:00,C001,29.95
+D002,2,2025-07-04T11:15:00,C002,15.00
