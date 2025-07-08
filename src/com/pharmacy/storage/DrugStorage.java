@@ -2,7 +2,13 @@ package com.pharmacy.storage;
 
 import com.pharmacy.models.Drug;
 import java.util.List;
-
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.sql.Date;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
 /**
  * Handles loading/saving drugs from/to CSV file
  * Must implement manual CSV parsing (no libraries)
@@ -19,15 +25,40 @@ public class DrugStorage {
      * @return List of Drug objects
      */
     public List<Drug> loadDrugs() {
-        // TODO: Implement manual CSV parsing
-        // Steps:
-        // 1. Open file using FileReader
-        // 2. Read line by line
-        // 3. Split each line by comma
-        // 4. Create Drug objects
-        // 5. Handle date parsing manually
         System.out.println("Loading drugs from: " + filePath);
-        return null; // Return actual list
+        List<Drug> drugs  = new ArrayList<Drug>();
+
+        try(BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            boolean isFirstLine = true;
+            while((line = reader.readLine())!=null){
+                 if (isFirstLine) {
+                 isFirstLine = false;
+                 continue;
+                }
+                String parts[] = line.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)");
+                if(parts.length >=6){
+                    String code = parts[0].trim();
+                    String name = parts[1].trim();
+                    String supplierRaw = parts[2].trim().replace("\"", "");
+                    List<String> supplierIds = Arrays.asList(supplierRaw.split(","));
+                    int quantity = Integer.parseInt(parts[3].trim());
+                    double price = Double.parseDouble(parts[4].trim());
+                    LocalDate expiryDate = LocalDate.parse(parts[5].trim());
+
+                    Drug drug = new Drug(code,name,supplierIds,quantity,price,expiryDate);
+                    drugs.add(drug);
+
+                }
+            }
+
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+
+        return drugs; // Return actual list
     }
     
     /**
