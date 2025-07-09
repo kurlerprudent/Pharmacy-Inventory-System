@@ -25,7 +25,7 @@ public class DrugStorage {
      * @return List of Drug objects
      */
     public List<Drug> loadDrugs() {
-        System.out.println("Loading drugs from: " + filePath);
+        //System.out.println("Loading drugs from: " + filePath);
         List<Drug> drugs  = new ArrayList<Drug>();
 
         try(BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
