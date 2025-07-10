@@ -1,21 +1,28 @@
 package com.pharmacy.models;
 
-/**
- * Represents a drug supplier
- * Properties: ID, name, location, delivery time
- */
 public class Supplier {
     private String id;
     private String name;
-    private String location;
-    private int deliveryTime; // in days
-    
-    public Supplier(String id, String name, String location, int deliveryTime) {
+    private String contact;
+
+    public Supplier(String id, String name, String contact) {
         this.id = id;
         this.name = name;
-        this.location = location;
-        this.deliveryTime = deliveryTime;
+        this.contact = contact;
     }
+
+    // Getters
+    public String getId() { return id; }
+    public String getName() { return name; }
+    public String getContact() { return contact; }
     
-    // TODO: Add getters/setters
+    // Setters
+    public void setId(String id) { this.id = id; }
+    public void setName(String name) { this.name = name; }
+    public void setContact(String contact) { this.contact = contact; }
+    
+    @Override
+    public String toString() {
+        return String.format("%s,%s,%s", id, name, contact);
+    }
 }

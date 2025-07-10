@@ -1,76 +1,37 @@
 package com.pharmacy.models;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
-/**
- * Represents a drug sale transaction
- */
+import com.pharmacy.utils.CSVUtils;
+
 public class Transaction {
+    private String id;
     private String drugCode;
+    private String customerId;
     private int quantity;
-    private double totalCost;
-    private String buyerId;
-    private String timestamp;
+    private LocalDateTime date;
 
-    private static final DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-
-    public Transaction(String drugCode, int quantity, double totalCost, String buyerId) {
+    public Transaction(String id, String drugCode, String customerId, int quantity) {
+        this.id = id;
         this.drugCode = drugCode;
+        this.customerId = customerId;
         this.quantity = quantity;
-        this.totalCost = totalCost;
-        this.buyerId = buyerId;
-        this.timestamp = LocalDateTime.now().format(DATE_FORMAT);
+        this.date = LocalDateTime.now();
     }
 
-    public String getDrugCode() {
-        return drugCode;
+    // Getters and setters
+    public String getId() { return id; }
+    public String getDrugCode() { return drugCode; }
+    public String getCustomerId() { return customerId; }
+    public int getQuantity() { return quantity; }
+    public LocalDateTime getDate() { return date; }
+       public void setDateFromString(String dateStr) {
+        this.date = CSVUtils.parseDateTime(dateStr);
     }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public double getTotalCost() {
-        return totalCost;
-    }
-
-    public String getBuyerId() {
-        return buyerId;
-    }
-
-    public String getTimestamp() {
-        return timestamp;
-    }
-
-    public String getDate() {
-        // Return just the date part for filtering
-        return timestamp.split(" ")[0];
-    }
-
-    public String toCSV() {
-        return String.format("%s,%d,%.2f,%s,%s",
-                drugCode, quantity, totalCost, buyerId, timestamp);
-    }
-
-    public static Transaction fromCSV(String line) {
-        String[] parts = line.split(",");
-        if (parts.length != 5) return null;
-
-        Transaction tx = new Transaction(
-                parts[0],
-                Integer.parseInt(parts[1]),
-                Double.parseDouble(parts[2]),
-                parts[3]
-        );
-        tx.timestamp = parts[4]; // override auto-generated timestamp with stored one
-        return tx;
-    }
-
-    @Override
-    public String toString() {
-        return String.format("[%s] Buyer: %s | Drug: %s | Qty: %d | Total: %.2f",
-                timestamp, buyerId, drugCode, quantity, totalCost);
-    }
+    
+    public void setId(String id) { this.id = id; }
+    public void setDrugCode(String drugCode) { this.drugCode = drugCode; }
+    public void setCustomerId(String customerId) { this.customerId = customerId; }
+    public void setQuantity(int quantity) { this.quantity = quantity; }
+    public void setDate(LocalDateTime date) { this.date = date; }
 }

@@ -1,25 +1,23 @@
 package com.pharmacy.models;
 
-import java.util.Queue;
-import com.pharmacy.utils.CustomQueue;
-
-/**
- * Represents a pharmacy customer
- * Uses CustomQueue for purchase history
- */
 public class Customer {
     private String id;
     private String name;
-    private String contact;
-    private CustomQueue<Transaction> purchaseHistory;
-    
-    public Customer(String id, String name, String contact) {
+    private String phone;
+
+    public Customer(String id, String name, String phone) {
         this.id = id;
         this.name = name;
-        this.contact = contact;
-        this.purchaseHistory = new CustomQueue<>(50); // Capacity for 50 transactions
+        this.phone = phone;
     }
+
+    // Getters
+    public String getId() { return id; }
+    public String getName() { return name; }
+    public String getPhone() { return phone; }
     
-    // TODO: Add getters/setters
-    // TODO: Add method to add transaction to history
+    // Setters
+    public void setId(String id) { this.id = id; }
+    public void setName(String name) { this.name = name; }
+    public void setPhone(String phone) { this.phone = phone; }
 }

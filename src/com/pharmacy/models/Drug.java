@@ -1,89 +1,43 @@
 package com.pharmacy.models;
 
 import java.time.LocalDate;
-import java.util.List;
 
-/**
- * Represents a drug/medicine in the inventory
- * Properties: code, name, suppliers, quantity, price, expiry date
- */
-public class Drug implements Comparable<Drug> {
+public class Drug {
     private String code;
     private String name;
-    private List<String> supplierIds;
     private int quantity;
     private double price;
-    private LocalDate expiryDate;
+    private LocalDate expiry;
+    private String supplierId;
 
-    // Constructor
-    public Drug(String code, String name, List<String> supplierIds,
-                int quantity, double price, LocalDate expiryDate) {
+    public Drug(String code, String name, int quantity, double price, LocalDate expiry, String supplierId) {
         this.code = code;
         this.name = name;
-        this.supplierIds = supplierIds;
         this.quantity = quantity;
         this.price = price;
-        this.expiryDate = expiryDate;
+        this.expiry = expiry;
+        this.supplierId = supplierId;
     }
 
-    // === Getters ===
-    public String getCode() {
-        return code;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public List<String> getSupplierIds() {
-        return supplierIds;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public LocalDate getExpiryDate() {
-        return expiryDate;
-    }
-
-    // === Setters ===
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setSupplierIds(List<String> supplierIds) {
-        this.supplierIds = supplierIds;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public void setExpiryDate(LocalDate expiryDate) {
-        this.expiryDate = expiryDate;
-    }
-
-    // For priority queue (stock-based ordering)
-    @Override
-    public int compareTo(Drug other) {
-        return Integer.compare(this.quantity, other.quantity);
-    }
-
+    // Getters
+    public String getCode() { return code; }
+    public String getName() { return name; }
+    public int getQuantity() { return quantity; }
+    public double getPrice() { return price; }
+    public LocalDate getExpiry() { return expiry; }
+    public String getSupplierId() { return supplierId; }
+    
+    // Setters
+    public void setCode(String code) { this.code = code; }
+    public void setName(String name) { this.name = name; }
+    public void setQuantity(int quantity) { this.quantity = quantity; }
+    public void setPrice(double price) { this.price = price; }
+    public void setExpiry(LocalDate expiry) { this.expiry = expiry; }
+    public void setSupplierId(String supplierId) { this.supplierId = supplierId; }
+    
     @Override
     public String toString() {
-        return name + " (" + code + ") - " + quantity + " units";
+        return String.format("%s,%s,%d,%.2f,%s,%s", 
+            code, name, quantity, price, expiry, supplierId);
     }
 }

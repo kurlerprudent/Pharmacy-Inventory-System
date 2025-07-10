@@ -1,35 +1,34 @@
 package com.pharmacy.utils;
 
-/**
- * Custom queue implementation for purchase history
- */
+import java.util.LinkedList;
+import java.util.List;
+
 public class CustomQueue<T> {
-    private final Object[] elements;
-    private int front = 0;
-    private int rear = -1;
-    private int size = 0;
+    private final LinkedList<T> list = new LinkedList<>();
     
-    public CustomQueue(int capacity) {
-        elements = new Object[capacity];
-    }
-    
-    public void enqueue(T element) {
-        if (size == elements.length) {
-            // Handle queue full - maybe remove oldest?
-            return;
-        }
-        rear = (rear + 1) % elements.length;
-        elements[rear] = element;
-        size++;
+    public void enqueue(T item) {
+        list.addLast(item);
     }
     
     public T dequeue() {
-        if (size == 0) return null;
-        T element = (T) elements[front];
-        front = (front + 1) % elements.length;
-        size--;
-        return element;
+        if (isEmpty()) return null;
+        return list.removeFirst();
     }
     
-    // TODO: Add peek, isEmpty, getRecentTransactions methods
+    public T peek() {
+        if (isEmpty()) return null;
+        return list.getFirst();
+    }
+    
+    public boolean isEmpty() {
+        return list.isEmpty();
+    }
+    
+    public int size() {
+        return list.size();
+    }
+    
+    public List<T> getAll() {
+        return new LinkedList<>(list);
+    }
 }
