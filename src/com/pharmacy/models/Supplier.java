@@ -6,9 +6,9 @@ package com.pharmacy.models;
  */
 public class Supplier {
     private String id;
-    private String name;
-    private String location;
-    private int deliveryTime; // in days
+    public String name;
+    public String location;
+    public int deliveryTime; // in days
     
     public Supplier(String id, String name, String location, int deliveryTime) {
         this.id = id;
@@ -16,6 +16,34 @@ public class Supplier {
         this.location = location;
         this.deliveryTime = deliveryTime;
     }
+
+
+    // Getters and setters for the properties
+
+     public String getId() { return id ;}
+    public void setId (String id) {this.id = id;}
+
+    public String getName() { return name ;}
+    public void setName (String name) {this.name = name;}
+
+    public String getLocation() { return location ;}
+    public void setLocation (String location) {this.location = location;}
+
+    public int getDeliverytime() { return deliveryTime ;}
+    public void setDeliverytime (int deliveryTime) {this.deliveryTime = deliveryTime;}
+
+
+
     
-    // TODO: Add getters/setters
+
+    
+    
+
+    public String toString() {
+        return name + "| location: " + location + "| Delivery: " + deliveryTime + "| time: ";
+    }
+    
 }
+
+   
+ 

@@ -8,8 +8,8 @@ import java.util.List;
  * Properties: code, name, suppliers, quantity, price, expiry date
  */
 public class Drug {
-    private String code;
-    private String name;
+    public String code;
+    public String name;
     private List<String> supplierIds; // List of supplier IDs
     private int quantity;
     private double price;
@@ -33,3 +33,5 @@ public class Drug {
     // TODO: Add other getters/setters
     // TODO: Implement validation methods (e.g., isExpired())
 }
+
+
