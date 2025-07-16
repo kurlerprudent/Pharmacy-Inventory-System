@@ -41,7 +41,7 @@ public class ConsoleHelper {
         
         System.out.printf(color + "%-8s %-20s %-8d $%-8.2f %-12s %s\n" + RESET,
             drug.getCode(), drug.getName(), drug.getQuantity(), 
-            drug.getPrice(), drug.getExpiry(), drug.getSupplierId());
+            drug.getPrice(), drug.getExpiry(), drug.getSupplierIds());
     }
     
     public static int getIntInput() {

@@ -29,23 +29,35 @@ public class InventoryManager {
         drugStorage.updateDrug(updatedDrug);
     }
 
+    public void removeDrug(String code) {
+        Drug drug = drugStorage.getDrug(code);
+        if (drug == null) {
+            throw new IllegalArgumentException("Drug not found");
+        }
+        drugStorage.removeDrug(code);
+    }
+
     public void updateStock(String drugCode, int quantityChange) {
         Drug drug = drugStorage.getDrug(drugCode);
-        if (drug == null) throw new IllegalArgumentException("Drug not found");
-        
+        if (drug == null)
+            throw new IllegalArgumentException("Drug not found");
+
         int newQuantity = drug.getQuantity() + quantityChange;
-        if (newQuantity < 0) throw new IllegalArgumentException("Insufficient stock");
-        
+        if (newQuantity < 0)
+            throw new IllegalArgumentException("Insufficient stock");
+
         drug.setQuantity(newQuantity);
         drugStorage.updateDrug(drug);
     }
 
     public void adjustPrice(String drugCode, double newPrice) {
-        if (newPrice <= 0) throw new IllegalArgumentException("Price must be positive");
-        
+        if (newPrice <= 0)
+            throw new IllegalArgumentException("Price must be positive");
+
         Drug drug = drugStorage.getDrug(drugCode);
-        if (drug == null) throw new IllegalArgumentException("Drug not found");
-        
+        if (drug == null)
+            throw new IllegalArgumentException("Drug not found");
+
         drug.setPrice(newPrice);
         drugStorage.updateDrug(drug);
     }

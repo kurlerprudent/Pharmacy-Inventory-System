@@ -1,21 +1,5 @@
-id,name,contact
-S001,MedSupplier Inc,555-1234
-S002,PharmaDistro,555-5678
-S003,Global Meds,555-9012S001,MedSupplier Inc,555-1234
-S002,PharmaDistro,555-5678
-S003,Global Meds,555-9012
-S001,MedSupplier Inc,555-1234
-S002,PharmaDistro,555-5678
-S003,Global Meds,555-9012S001
-S002,PharmaDistro,555-5678
-S003,Global Meds,555-9012
-S001,MedSupplier Inc,555-1234
-S002,PharmaDistro,555-5678
-S003,Global Meds,555-9012S001
-S002,PharmaDistro,555-5678
-S003,Global Meds,555-9012
-S001,MedSupplier Inc,555-1234
-S002,PharmaDistro,555-5678
-S003,Global Meds,555-9012S001
-S002,PharmaDistro,555-5678
-S003,Global Meds,555-9012
+id,name,location,turnaroundTime
+S001,MedX Pharma,Accra,2
+S002,PharmaLink,Kumasi,3
+S003,GlobalMed,Takoradi,4
+S004,HealthHub,Tamale,5
