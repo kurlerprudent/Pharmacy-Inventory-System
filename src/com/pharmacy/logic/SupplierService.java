@@ -18,11 +18,11 @@ public class SupplierService {
         if (location == null || location.trim().isEmpty()) {
             return new ArrayList<>();
         }
-        
+
         String locLower = location.toLowerCase().trim();
         return storage.getAllSuppliers().stream()
-            .filter(s -> s.getLocation().toLowerCase().contains(locLower))
-            .collect(Collectors.toList());
+                .filter(s -> s.getLocation().toLowerCase().contains(locLower))
+                .collect(Collectors.toList());
     }
 
     /** Return suppliers whose turnaround time is <= maxDays */
@@ -30,9 +30,9 @@ public class SupplierService {
         if (maxDays < 0) {
             return new ArrayList<>();
         }
-        
+
         return storage.getAllSuppliers().stream()
-            .filter(s -> s.getTurnaroundTime() <= maxDays)
-            .collect(Collectors.toList());
+                .filter(s -> s.getTurnaroundTime() <= maxDays)
+                .collect(Collectors.toList());
     }
 }

@@ -9,9 +9,9 @@ public class Transaction {
     private String customerId;
     private int quantity;
     private LocalDateTime date;
-    private double totalCost;        // ← new field
+    private double totalCost;        
 
-    // Updated constructor to accept totalCost
+    
     public Transaction(String id,
                        String drugCode,
                        String customerId,
@@ -31,13 +31,13 @@ public class Transaction {
     public String getCustomerId()     { return customerId; }
     public int    getQuantity()       { return quantity; }
     public LocalDateTime getDate()    { return date; }
-    public double getTotalCost()      { return totalCost; }  // ← new getter
+    public double getTotalCost()      { return totalCost; }  
 
     // Setters
     public void setDate(LocalDateTime date)       { this.date = date; }
     public void setTotalCost(double totalCost)    { this.totalCost = totalCost; }
 
-    // For CSV import (parses the stored date)
+    // parses the stored date
     public void setDateFromString(String dateStr) {
         this.date = CSVUtils.parseDateTime(dateStr);
     }

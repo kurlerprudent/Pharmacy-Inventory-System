@@ -22,11 +22,11 @@ public class SupplierStorage {
                 }
                 try {
                     Supplier s = new Supplier(
-                        r[0].trim(),                     // id
-                        r[1].trim(),                     // name
-                        r[2].trim(),                     // contact
-                        r[3].trim(),                     // location
-                        Integer.parseInt(r[4].trim())    // turnaroundTime
+                            r[0].trim(), // id
+                            r[1].trim(), // name
+                            r[2].trim(), // contact
+                            r[3].trim(), // location
+                            Integer.parseInt(r[4].trim()) // turnaroundTime
                     );
                     supplierMap.put(s.getId(), s);
                 } catch (NumberFormatException e) {

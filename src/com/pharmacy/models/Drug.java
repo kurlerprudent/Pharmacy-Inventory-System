@@ -2,7 +2,6 @@ package com.pharmacy.models;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.StringJoiner;
 
 public class Drug {
     private String code;
@@ -10,14 +9,14 @@ public class Drug {
     private int quantity;
     private double price;
     private LocalDate expiry;
-    private List<String> supplierIds;  // ← now a list
+    private List<String> supplierIds;
 
     public Drug(String code,
-                String name,
-                int quantity,
-                double price,
-                LocalDate expiry,
-                List<String> supplierIds) {
+            String name,
+            int quantity,
+            double price,
+            LocalDate expiry,
+            List<String> supplierIds) {
         this.code = code;
         this.name = name;
         this.quantity = quantity;
@@ -27,27 +26,65 @@ public class Drug {
     }
 
     // Getters
-    public String getCode() { return code; }
-    public String getName() { return name; }
-    public int getQuantity() { return quantity; }
-    public double getPrice() { return price; }
-    public LocalDate getExpiry() { return expiry; }
-    public List<String> getSupplierIds() { return supplierIds; }
+    public String getCode() {
+        return code;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public LocalDate getExpiry() {
+        return expiry;
+    }
+
+    public List<String> getSupplierIds() {
+        return supplierIds;
+    }
 
     // Setters
-    public void setCode(String code) { this.code = code; }
-    public void setName(String name) { this.name = name; }
-    public void setQuantity(int quantity) { this.quantity = quantity; }
-    public void setPrice(double price) { this.price = price; }
-    public void setExpiry(LocalDate expiry) { this.expiry = expiry; }
-    public void setSupplierIds(List<String> supplierIds) { this.supplierIds = supplierIds; }
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public void setExpiry(LocalDate expiry) {
+        this.expiry = expiry;
+    }
+
+    public void setSupplierIds(List<String> supplierIds) {
+        this.supplierIds = supplierIds;
+    }
 
     @Override
     public String toString() {
-        // join supplier IDs with semicolons
-        StringJoiner sj = new StringJoiner(";");
-        for (String s : supplierIds) sj.add(s);
+        // join supplier IDs with semicolons 
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < supplierIds.size(); i++) {
+            sb.append(supplierIds.get(i));
+            if (i < supplierIds.size() - 1)
+                sb.append(";");
+        }
         return String.format("%s,%s,%d,%.2f,%s,%s",
-            code, name, quantity, price, expiry, sj.toString());
+                code, name, quantity, price, expiry, sb.toString());
     }
 }
