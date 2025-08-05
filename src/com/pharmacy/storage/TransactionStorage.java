@@ -71,7 +71,7 @@ public class TransactionStorage {
         return recentTransactions.getTopItems(count);
     }
 
-    /** NEW: get the most recent N purchases of a specific drug */
+    /**  get the most recent N purchases of a specific drug */
     public List<Transaction> getRecentTransactionsForDrug(String drugCode, int count) {
         return recentTransactions.getTopItems(recentTransactions.size()).stream()
             .filter(t -> t.getDrugCode().equals(drugCode))
@@ -79,7 +79,7 @@ public class TransactionStorage {
             .collect(Collectors.toList());
     }
 
-    /** NEW: get all transactions within [from, to] */
+    /**  get all transactions within [from, to] */
     public List<Transaction> getTransactionsInPeriod(LocalDateTime from, LocalDateTime to) {
         return transactionHistory.getAll().stream()
             .filter(t -> !t.getDate().isBefore(from) && !t.getDate().isAfter(to))

@@ -57,7 +57,7 @@ public class SupplierStorage {
 
     public void updateSupplier(Supplier s) {
         supplierMap.put(s.getId(), s);
-        // for simplicity we’re not rewriting CSV here
+        
     }
 
     public void removeSupplier(String id) {
