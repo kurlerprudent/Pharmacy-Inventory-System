@@ -42,7 +42,7 @@ public class SortService {
     }
     
     private List<Drug> merge(List<Drug> left, List<Drug> right, Comparator<Drug> comp) {
-        List<Drug> merged = new ArrayList();
+        List<Drug> merged = new ArrayList<>();
         int i = 0, j = 0;
         
         while (i < left.size() && j < right.size()) {

@@ -1,23 +1,14 @@
 package com.pharmacy.utils;
-
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeFormatterBuilder;
 import java.time.format.DateTimeParseException;
-import java.time.temporal.ChronoField;
 import java.util.*;
 
 public class CSVUtils {
-    // Handle both ISO format and space-separated formats
-    private static final DateTimeFormatter DATE_FORMATTER = new DateTimeFormatterBuilder()
-            .appendPattern("yyyy-MM-dd[['T'][ ]HH:mm:ss")
-            .parseDefaulting(ChronoField.HOUR_OF_DAY, 0)
-            .parseDefaulting(ChronoField.MINUTE_OF_HOUR, 0)
-            .parseDefaulting(ChronoField.SECOND_OF_MINUTE, 0)
-            .toFormatter();
+  
 
     // Read CSV and return list of rows
     public static List<String[]> readCSV(String filePath) throws IOException {
@@ -41,8 +32,10 @@ public class CSVUtils {
             switch (filePath) {
                 case "data/drugs.csv":
                     header = "code,name,quantity,price,expiry,supplier_ids\n";
+                    break;
                 case "data/suppliers.csv":
                     header = "id,name,contact,location,turnaround_days\n";
+                    break;
                 case "data/customers.csv":
                     header = "id,name,phone\n";
                     break;
