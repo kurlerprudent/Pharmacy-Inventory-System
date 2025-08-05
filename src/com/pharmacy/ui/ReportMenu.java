@@ -16,13 +16,16 @@ public class ReportMenu {
     private final StockMonitor stockMonitor;
     private final DrugStorage drugStorage;
     private final TransactionStorage transactionStorage;
+    private final SupplierStorage supplierStorage;
 
     public ReportMenu(StockMonitor stockMonitor, 
                      DrugStorage drugStorage,
-                     TransactionStorage transactionStorage) {
+                     TransactionStorage transactionStorage,
+                     SupplierStorage supplierStorage) {
         this.stockMonitor = stockMonitor;
         this.drugStorage = drugStorage;
         this.transactionStorage = transactionStorage;
+        this.supplierStorage = supplierStorage;
     }
 
     public void showMenu() {
@@ -133,7 +136,7 @@ public class ReportMenu {
     System.out.print("Enter choice: ");
     int choice = ConsoleHelper.getIntInput();
 
-    SupplierService svc = new SupplierService(new SupplierStorage());
+    SupplierService svc = new SupplierService(this.supplierStorage);
     List<Supplier> results;
 
     switch (choice) {

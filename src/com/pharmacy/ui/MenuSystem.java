@@ -5,8 +5,8 @@ import com.pharmacy.storage.*;
 
 public class MenuSystem {
     private final DrugStorage drugStorage = new DrugStorage();
-    private final SupplierStorage supplierStorage = new SupplierStorage();
     private final CustomerStorage customerStorage = new CustomerStorage();
+    private final SupplierStorage supplierStorage = new SupplierStorage();
     private final TransactionStorage transactionStorage = new TransactionStorage();
     
     private final InventoryManager inventoryManager = new InventoryManager(drugStorage);
@@ -14,7 +14,7 @@ public class MenuSystem {
     private final StockMonitor stockMonitor = new StockMonitor(drugStorage);
     
     private final DrugMenu drugMenu = new DrugMenu(inventoryManager, searchService, drugStorage);
-    private final ReportMenu reportMenu = new ReportMenu(stockMonitor, drugStorage, transactionStorage);
+    private final ReportMenu reportMenu = new ReportMenu(stockMonitor, drugStorage, transactionStorage, supplierStorage);
     private final SalesMenu salesMenu = new SalesMenu(
         transactionStorage, drugStorage, customerStorage, inventoryManager
     );

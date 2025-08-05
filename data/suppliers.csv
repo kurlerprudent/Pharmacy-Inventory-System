@@ -1,5 +1,5 @@
-id,name,location,turnaroundTime
-S001,MedX Pharma,Accra,2
-S002,PharmaLink,Kumasi,3
-S003,GlobalMed,Takoradi,4
-S004,HealthHub,Tamale,5
+id,name,contact,location,turnaroundTime
+S001,MedX Pharma,+233-20-123-4567,Accra,2
+S002,PharmaLink,+233-24-987-6543,Kumasi,3
+S003,GlobalMed,+233-27-555-0123,Takoradi,4
+S004,HealthHub,+233-26-777-8899,Tamale,5

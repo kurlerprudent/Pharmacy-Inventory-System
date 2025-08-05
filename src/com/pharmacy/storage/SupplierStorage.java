@@ -16,15 +16,22 @@ public class SupplierStorage {
         try {
             List<String[]> records = CSVUtils.readCSV("data/suppliers.csv");
             for (String[] r : records) {
-                if (r.length < 5) continue;
-                Supplier s = new Supplier(
-                    r[0],
-                    r[1],
-                    r[2],
-                    r[3],
-                    Integer.parseInt(r[4])
-                );
-                supplierMap.put(s.getId(), s);
+                if (r.length < 5) {
+                    System.err.println("Invalid supplier record (expected 5 fields): " + Arrays.toString(r));
+                    continue;
+                }
+                try {
+                    Supplier s = new Supplier(
+                        r[0].trim(),                     // id
+                        r[1].trim(),                     // name
+                        r[2].trim(),                     // contact
+                        r[3].trim(),                     // location
+                        Integer.parseInt(r[4].trim())    // turnaroundTime
+                    );
+                    supplierMap.put(s.getId(), s);
+                } catch (NumberFormatException e) {
+                    System.err.println("Invalid turnaround time for supplier record: " + Arrays.toString(r));
+                }
             }
         } catch (IOException e) {
             System.err.println("Error loading suppliers: " + e.getMessage());

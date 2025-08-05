@@ -31,7 +31,7 @@ public class ConsoleHelper {
     }
     
     public static void printHeader(String header) {
-        System.out.println(PURPLE + "\n===== " + header + " =====" + RESET);
+        System.out.println(PURPLE + "\n\t " + header + "\t" + RESET);
     }
     
     public static void printDrug(Drug drug) {

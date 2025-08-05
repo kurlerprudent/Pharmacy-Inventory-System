@@ -4,7 +4,6 @@ import com.pharmacy.logic.InventoryManager;
 import com.pharmacy.logic.PurchaseHistoryService;
 import com.pharmacy.models.*;
 import com.pharmacy.storage.*;
-import com.pharmacy.utils.ValidationUtils;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -33,11 +32,8 @@ public class SalesMenu {
             ConsoleHelper.printHeader("SALES MANAGEMENT");
             System.out.println("1. Record New Sale");
             System.out.println("2. View Sales History");
-            System.out.println("3. Back to Main Menu");
-            System.out.println("1. Record New Sale");
-            System.out.println("2. View Sales History");
-            System.out.println("3. Sales Report by Period"); // ← new
-            System.out.println("4. Back to Main Menu"); // ← shifted
+            System.out.println("3. Sales Report by Period");
+            System.out.println("4. Back to Main Menu"); 
             System.out.print("Enter choice: ");
 
             int choice = ConsoleHelper.getIntInput();
@@ -51,7 +47,7 @@ public class SalesMenu {
                     break;
                 case 3:
                     salesReportByPeriod();
-                    break; // ← handle report
+                    break; 
                 case 4:
                     return;
                 default:
